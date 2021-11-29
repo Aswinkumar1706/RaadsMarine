@@ -33,19 +33,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let post of posts">
-                        <td>{{ post.id }}</td>
-                        <td>{{ post.id }}</td>
-                        <td>{{ post.id }}</td>
-                        <td>{{ post.id }}</td>
-                        <td>{{ post.id }}</td>
-                        <td>{{ post.id }}</td>
-                        <td>{{ post.id }}</td>
-                        <td>{{ post.id }}</td>
+                    <tr *ngFor="let item of customers;let i = index;">
+                        <td>{{ item.id }}</td>
+                        <td>{{ item.companyName }}</td>
+                        <td>{{ item.customerName }}</td>
+                        <td>{{ item.email }}</td>
+                        <td>{{ item.phonenumber }}</td>
+                        <td>{{ item.gst }}</td>
+                        <td>{{ item.address }}</td>
+                        <td>{{ item.remarks }}</td>
+                        <td>{{ item.status == '1' ? 'Active' : 'Inactive' }}</td>
                         <td>
                             <div class="d-flex order-actions">	
-                                 <a href="javascript:;" routerLink="/main/customerentry" [queryParams]="{pagetype: 'edit',id:post.id}" class=""><i class="bx bx-edit-alt"></i></a>
-                                <a href="javascript:;" routerLink="/main/employeepurchasehistory/{{post.id}}" class="ms-4"><i class="bx bx-purchase-tag-alt"></i></a>
+                                 <a href="javascript:;" routerLink="/main/customerentry" [queryParams]="{pagetype: 'edit',id:item.id}" class=""><i class="bx bx-edit-alt"></i></a>
+                                <a href="javascript:;" routerLink="/main/employeepurchasehistory/{{item.id}}" class="ms-4"><i class="bx bx-purchase-tag-alt"></i></a>
                             </div>
                         </td>
                       </tr>

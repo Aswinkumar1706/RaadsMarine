@@ -23,12 +23,28 @@ export class ProjectListComponent implements OnInit {
 
   ngOnInit(): void {
     
+
+    setTimeout(() =>{
+       this.posts = [
+         {
+          'id':'1',
+          'productName':'Navy Ship',
+          'Budget':240000,
+          'customerName':'Manikandan',
+          'startDate':'29-11-2021',
+          'endDate':'01-02-2022',
+          'description':'test',
+          'status':'1',
+         }
+       ];
+       this.dtTrigger.next();
+    },1000)
   //  $("#example").DataTable()
-    this.http.get('http://jsonplaceholder.typicode.com/posts')
-      .subscribe(posts => {
-        this.posts = posts;
-        this.dtTrigger.next();
-    });
+    // this.http.get('https://jsonplaceholder.typicode.com/posts')
+    //   .subscribe(posts => {
+    //     this.posts = posts;
+    //     this.dtTrigger.next();
+    // });
   }
 
   ngOnDestroy(): void {

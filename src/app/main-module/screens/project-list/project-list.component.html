@@ -35,13 +35,14 @@
                 <tbody>
                     <tr *ngFor="let post of posts">
                         <td>{{ post.id }}</td>
-                        <td>{{ post.id }}</td>
-                        <td>{{ post.id }}</td>
-                        <td>{{ post.id }}</td>
-                        <td>{{ post.id }}</td>
-                        <td>{{ post.id }}</td>
-                        <td>{{ post.id }}</td>
-                        <td>{{ post.id }}</td>
+                        <td>{{ post.productName }}</td>
+                        <td>{{ post.Budget }}</td>
+                        <td>{{ post.customerName }}</td>
+                        <td>{{ post.startDate }}</td>
+                        <td>{{ post.endDate }}</td>
+                        <td>{{ post.description }}</td>
+                        <td>{{ post.status }}</td>
+                       
                         <td>
                             <div class="d-flex order-actions">	
                                  <a href="javascript:;" routerLink="/main/projectentry" [queryParams]="{pagetype: 'edit',id:post.id}" class=""><i class="bx bx-edit-alt"></i></a>

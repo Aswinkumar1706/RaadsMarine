@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-customer-entry',
@@ -14,9 +15,19 @@ export class CustomerEntryComponent implements OnInit {
    editCustomerId:string ='';
    ActionbuttonText:any;
 
- customerEntryForm! : FormGroup;
+   customerEntryForm! : FormGroup;
 
-  constructor(private route: ActivatedRoute,private fb : FormBuilder) {
+  constructor(private route: ActivatedRoute,private fb : FormBuilder,private apiService: ApiService,private router : Router) {
+    this.customerEntryForm = this.fb.group({
+      'companyName':['',Validators.required],
+      'customerName':['',Validators.required],
+      'email':[''],
+      'phonenumber':['',Validators.required],
+      'gst':[''],
+      'address':[''],
+      'remarks':[''],
+      'status':['',Validators.required],
+   })
     this.route.queryParams
       .subscribe(params => {
         console.log(params); // { pagetype: "new" }
@@ -24,10 +35,26 @@ export class CustomerEntryComponent implements OnInit {
         if(this.pagetype == 'new'){
            this.pageTitle = 'Add Customer'
            this.ActionbuttonText = 'Create';
+          
         }else{
           this.editCustomerId = params.id;
           this.pageTitle = 'Edit Customer'
           this.ActionbuttonText = 'Update';
+          var customerDataList = JSON.parse(localStorage.getItem('customerData') || "[]");
+          var customerData = customerDataList.find((x:any) => x.id == this.editCustomerId);
+          if(customerData){
+            this.customerEntryForm = this.fb.group({
+              'companyName':[customerData.companyName,Validators.required],
+              'customerName':[customerData.customerName,Validators.required],
+              'email':[customerData.email],
+              'phonenumber':[customerData.phonenumber,Validators.required],
+              'gst':[customerData.gst],
+              'address':[customerData.address],
+              'remarks':[customerData.remarks],
+              'status':[customerData.status,Validators.required],
+           })
+          }
+          
         }
         console.log(this.pagetype); // new
       }
@@ -36,17 +63,8 @@ export class CustomerEntryComponent implements OnInit {
 
   ngOnInit(): void {
     
-    this.customerEntryForm = this.fb.group({
-       'companyName':['',Validators.required],
-       'customerName':['',Validators.required],
-       'email':[''],
-       'phonenumber':['',Validators.required],
-       'gst':[''],
-       'address':[''],
-       'remarks':[''],
-       'status':['',Validators.required],
-    })
-
+    
+    
   }
 
   sendData(){
@@ -55,9 +73,34 @@ export class CustomerEntryComponent implements OnInit {
     if (this.customerEntryForm.invalid) {
         return;
     }
-
+    // {
+    //   'id':1,
+    //   'companyName':"Navy Ship",
+    //   'customerName':"Manikandan",
+    //   'email':"mani@gmail.com",
+    //   'phonenumber':"9876543210",
+    //   'gst':"test",
+    //   'address':"test",
+    //   'remarks':"test",
+    //   'status':"1",
+    // }
+    var customer = JSON.parse(localStorage.getItem('customerData')!);
+    var lastId=1;
+    var customerData: any[] = [];
+    if(customer){
+      lastId = customer.length + 2;
+      customerData = customer;
+      customerData.push(this.customerEntryForm.value)
+    }else{
+     var data = this.customerEntryForm.value;
+     data['id'] = lastId;
+      customerData.push(data)
+    }
+    this.apiService.insertCustomers(customerData);
+    alert("Success");
+    this.router.navigate(['main','customerlist']);
     // display form values on success
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.customerEntryForm.value, null, 4));
+    //alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.customerEntryForm.value, null, 4));
   }
 
   clear(){

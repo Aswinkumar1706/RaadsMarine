@@ -13,6 +13,7 @@ export class ProductEntryComponent implements OnInit {
    ActionbuttonText:any;
 
    productForm! : FormGroup;
+   url: string = "" ;
 
   constructor(private route: ActivatedRoute,private fb : FormBuilder) {
     this.route.queryParams
@@ -38,13 +39,27 @@ export class ProductEntryComponent implements OnInit {
        'productName':['',Validators.required],
        'Budget':['',Validators.required],
        'startDate':['',Validators.required],
-       'endDate':['',Validators.required],
+       'invoiceNo':[''],
+       'quantity':['',Validators.required],
+       'unit':['',Validators.required],
+       'endDate':[''],
        'description':[''],
        'status':[''],
     })
 
   }
 
+  onSelectFile(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+
+      reader.readAsDataURL(event.target.files[0]); // read file as data url
+
+      reader.onload = (event:any) => { // called once readAsDataURL is completed
+        this.url = event.target.result;
+      }
+    }
+  }
   sendData(){
     
     // stop here if form is invalid

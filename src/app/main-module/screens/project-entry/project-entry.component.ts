@@ -39,6 +39,7 @@ export class ProjectEntryComponent implements OnInit {
     this.productForm = this.fb.group({
        'productName':['',Validators.required],
        'Budget':['',Validators.required],
+       'customerName':['',Validators.required],
        'startDate':['',Validators.required],
        'endDate':['',Validators.required],
        'description':[''],

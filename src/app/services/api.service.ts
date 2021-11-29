@@ -6,4 +6,17 @@ import { Injectable } from '@angular/core';
 export class ApiService {
 
   constructor() { }
+
+    getCustomers(){
+       
+    }
+    getCustomer(){
+      
+    }
+    insertCustomers(customerData:any){
+      localStorage.setItem('customerData',JSON.stringify(customerData));
+    }
+    updateCustomers(){
+      
+    }
 }

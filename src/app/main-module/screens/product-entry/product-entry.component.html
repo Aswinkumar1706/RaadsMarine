@@ -33,13 +33,40 @@
                 <input type="text" class="form-control" formControlName="Budget" id="inputBudget">
             </div>
             <div class="col-md-6">
-                <label for="inputSDate" class="form-label">Start Date</label>
+                <label for="inputSDate" class="form-label">Created Date</label>
                 <input type="date" class="form-control" formControlName="startDate" id="inputSDate">
             </div>
             <div class="col-md-6">
+                <label for="inputQuantity" class="form-label">Quantity</label>
+                <input type="text" class="form-control" formControlName="quantity" id="inputQuantity">
+            </div>
+            <div class="col-md-6">
+                <label for="inputunit" class="form-label">Product Unit</label>
+                <!-- <input type="text" class="form-control" formControlName="unit" id="inputunit"> -->
+                <select id="inputunit" formControlName="unit" class="form-select">
+                    <option selected hidden>Choose...</option>
+                    <option value="kg">Kilogram</option>
+                    <option value="l">Litres</option>
+                    <option value="m">Meter</option>
+                    <option value="pc">Piece</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label for="inputinvoiceNo" class="form-label">Invoice No</label>
+                <input type="text" class="form-control" formControlName="invoiceNo" id="inputEDate">
+            </div>
+            <div class="col-md-6">
+                <label for="inputinvoiceNo" class="form-label">Invoice File</label>
+                <input type="file" class="form-control"  id="inputEDate" (change)="onSelectFile($event)">
+            </div>
+            <div class="col-md-6" *ngIf="url">
+                <img [src]="url" height="200">
+            </div>
+           
+            <!-- <div class="col-md-6">
                 <label for="inputEDate" class="form-label">End Date</label>
                 <input type="date" class="form-control" formControlName="endDate" id="inputEDate">
-            </div>
+            </div> -->
             <div class="col-12">
                 <label for="inputDesc" class="form-label">Description</label>
                 <textarea class="form-control" id="inputDesc" formControlName="description" placeholder="Description" rows="3"></textarea>
@@ -48,7 +75,7 @@
             <div class="col-md-4">
                 <label for="inputStatus" class="form-label">Status</label>
                 <select id="inputStatus" formControlName="status" class="form-select">
-                    <option selected>Choose...</option>
+                    <option selected hidden>Choose...</option>
                     <option [value]="2">Completed</option>
                     <option [value]="1">Live</option>
                     <option [value]="0">End</option>

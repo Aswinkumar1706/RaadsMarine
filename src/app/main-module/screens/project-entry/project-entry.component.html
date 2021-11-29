@@ -34,8 +34,8 @@
             </div>
             <div class="col-md-6">
                 <label for="inputCustName" class="form-label">Customer Name</label>
-                <select id="inputCustName" formControlName="status" class="form-select">
-                    <option selected>Choose...</option>
+                <select id="inputCustName" formControlName="customerName" class="form-select">
+                    <option selected hidden>Choose...</option>
                     <option [value]="2">Completed</option>
                     <option [value]="1">Live</option>
                     <option [value]="0">End</option>
@@ -57,7 +57,7 @@
             <div class="col-md-4">
                 <label for="inputStatus" class="form-label">Status</label>
                 <select id="inputStatus" formControlName="status" class="form-select">
-                    <option selected>Choose...</option>
+                    <option selected hidden>Choose...</option>
                     <option [value]="2">Completed</option>
                     <option [value]="1">Live</option>
                     <option [value]="0">End</option>

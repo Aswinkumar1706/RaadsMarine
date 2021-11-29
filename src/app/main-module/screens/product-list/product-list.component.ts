@@ -22,7 +22,7 @@ export class ProductListComponent implements OnInit,OnDestroy {
   ngOnInit(): void {
     
   //  $("#example").DataTable()
-    this.http.get('http://jsonplaceholder.typicode.com/posts')
+    this.http.get('https://jsonplaceholder.typicode.com/posts')
       .subscribe(posts => {
         this.posts = posts;
         this.dtTrigger.next();
