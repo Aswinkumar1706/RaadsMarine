@@ -3,14 +3,35 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NavbarComponent } from './core-components/shared-components/navbar/navbar.component';
+import { SidebarComponent } from './core-components/shared-components/sidebar/sidebar.component';
+import { FooterComponent } from './core-components/shared-components/footer/footer.component';
+import { MainContainerComponent } from './core-components/shared-components/main-container/main-container.component';
+import { LoginComponent } from './core-components/login/login.component';
+import { ThemeSwitcherComponent } from './core-components/shared-components/theme-switcher/theme-switcher.component';
 
+import { DataTablesModule } from 'angular-datatables';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PageErrorComponent } from './core-components/page-error/page-error.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavbarComponent,
+    SidebarComponent,
+    FooterComponent,
+    MainContainerComponent,
+    LoginComponent,
+    ThemeSwitcherComponent,
+    PageErrorComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    DataTablesModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

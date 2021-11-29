@@ -1,0 +1,82 @@
+<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+    <div class="ps-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0 p-0">
+                <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+                </li>
+                <li class="breadcrumb-item" aria-current="page"><a href="javascript:;" routerLink="/main/vendorlist">Vendors List</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Vendors Entry</li>
+            </ol>
+        </nav>
+    </div>
+    <div class="ms-auto">
+        <div class="btn-group">
+            <a type="button" class="btn btn-light"  routerLink="/main/vendorlist" >Back</a>
+        </div>
+    </div>
+</div>
+<div class="card border-top border-0 border-4 border-white">
+    <div class="card-body p-5">
+        <div class="card-title d-flex align-items-center">
+            <div><i class="bx bxs-user me-1 font-22 text-white"></i>
+            </div>
+            <h5 class="mb-0 text-white">{{pageTitle}}</h5>
+        </div>
+        <hr>
+        <form class="row g-3" [formGroup]="customerEntryForm" novalidate>
+            <div class="col-md-6">
+                <label for="inputvendorCompName"  class="form-label">Vendor Company Name</label>
+                <input type="text" class="form-control" formControlName="vendorCompName" id="inputvendorCompName">
+            </div>
+            <div class="col-md-6">
+                <label for="inputvendorName"  class="form-label">Vendor Name</label>
+                <input type="text" class="form-control" formControlName="vendorName" id="inputvendorName">
+            </div>
+            <div class="col-md-6">
+                <label for="inputproductName"  class="form-label">Product Name</label>
+                <select id="inputproductName" formControlName="productName" class="form-select">
+                    <option selected>Choose...</option>
+                    <option [value]="1">Active</option>
+                    <option [value]="0">Inactive</option>
+                   
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label for="inputEmail" class="form-label">Email</label>
+                <input type="email" class="form-control" formControlName="email" id="inputEmail">
+            </div>
+            <div class="col-md-6">
+                <label for="inputPhNo" class="form-label">Phone Number</label>
+                <input type="text" class="form-control" formControlName="phoneNumber" id="inputPhNo">
+            </div>
+            <div class="col-md-6">
+                <label for="inputgst" class="form-label">GST Number</label>
+                <input type="text" class="form-control" formControlName="gst" id="inputgst">
+            </div>
+            <div class="col-md-6">
+                <label for="inputaddress" class="form-label">Address</label>
+                <input type="text" class="form-control" formControlName="address" id="inputaddress">
+            </div>
+            <div class="col-12">
+                <label for="inputRemarks" class="form-label">Remarks</label>
+                <textarea class="form-control" id="inputRemarks" formControlName="remarks" placeholder="Remarks" rows="3"></textarea>
+            </div>
+            
+            <div class="col-md-4">
+                <label for="inputStatus" class="form-label">Status</label>
+                <select id="inputStatus" formControlName="status" class="form-select">
+                    <option selected>Choose...</option>
+                    <option [value]="1">Active</option>
+                    <option [value]="0">Inactive</option>
+                   
+                </select>
+            </div>
+          
+        
+            <div class="col-12">
+                <button type="submit" class="btn btn-light px-5" (click)="sendData()">{{ActionbuttonText}} </button>
+                <button type="submit" class="btn btn-light ms-2 px-5" *ngIf="!editCustomerId" (click)="clear()">Clear </button>
+            </div>
+        </form>
+    </div>
+</div>
