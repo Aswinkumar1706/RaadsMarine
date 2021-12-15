@@ -36,12 +36,21 @@ export class ProductEntryComponent implements OnInit {
   ngOnInit(): void {
     
     this.productForm = this.fb.group({
+       'productId':['',Validators.required],
        'productName':['',Validators.required],
-       'Budget':['',Validators.required],
+       'unit':['',Validators.required],
+       'quantity':['',Validators.required],
+       'brand':['',Validators.required],
+       'Category':'',
+       'gstvalue':'',
+       'gstMethod':'',
+       'minQAlert':"",
+      //  'Budget':['',Validators.required],
+      
        'startDate':['',Validators.required],
        'invoiceNo':[''],
-       'quantity':['',Validators.required],
-       'unit':['',Validators.required],
+      
+      
        'endDate':[''],
        'description':[''],
        'status':[''],

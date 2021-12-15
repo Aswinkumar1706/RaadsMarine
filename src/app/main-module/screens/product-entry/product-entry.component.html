@@ -25,23 +25,15 @@
         <hr>
         <form class="row g-3" [formGroup]="productForm" novalidate>
             <div class="col-md-6">
+                <label for="inputproductId"  class="form-label">Product Id</label>
+                <input type="text" class="form-control" formControlName="productId" id="inputproductId">
+            </div>
+            <div class="col-md-6">
                 <label for="inputName"  class="form-label">Name</label>
                 <input type="text" class="form-control" formControlName="productName" id="inputName">
             </div>
             <div class="col-md-6">
-                <label for="inputBudget" class="form-label">Budget</label>
-                <input type="text" class="form-control" formControlName="Budget" id="inputBudget">
-            </div>
-            <div class="col-md-6">
-                <label for="inputSDate" class="form-label">Created Date</label>
-                <input type="date" class="form-control" formControlName="startDate" id="inputSDate">
-            </div>
-            <div class="col-md-6">
-                <label for="inputQuantity" class="form-label">Quantity</label>
-                <input type="text" class="form-control" formControlName="quantity" id="inputQuantity">
-            </div>
-            <div class="col-md-6">
-                <label for="inputunit" class="form-label">Product Unit</label>
+                <label for="inputunit" class="form-label">Unit Type</label>
                 <!-- <input type="text" class="form-control" formControlName="unit" id="inputunit"> -->
                 <select id="inputunit" formControlName="unit" class="form-select">
                     <option selected hidden>Choose...</option>
@@ -49,8 +41,49 @@
                     <option value="l">Litres</option>
                     <option value="m">Meter</option>
                     <option value="pc">Piece</option>
+                    <option value="box">Box</option>
                 </select>
             </div>
+            <div class="col-md-6">
+                <label for="inputQuantity" class="form-label">Quantity</label>
+                <input type="number" class="form-control" formControlName="quantity" id="inputQuantity">
+            </div>
+            <div class="col-md-6">
+                <label for="inputbrand" class="form-label">Brand</label>
+                <input type="text" class="form-control" formControlName="brand" id="inputbrand">
+            </div>
+            <div class="col-md-4">
+                <label for="inputCategory" class="form-label">Category</label>
+                <select id="inputCategory" formControlName="Category" class="form-select">
+                    <option selected hidden>Choose...</option>
+                    <option [value]="2">Category 1</option>
+                    <option [value]="1">Category 2</option>
+                    <option [value]="0">Category 3</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label for="inputgstvalue" class="form-label">GST </label>
+                <input type="text" class="form-control" formControlName="gstvalue" id="inputgstvalue">
+            </div>
+            <div class="col-md-6">
+                <label for="inputgstMethod" class="form-label">GST Method</label>
+                <input type="text" class="form-control" formControlName="gstMethod" id="inputgstMethod">
+            </div>
+            <div class="col-md-6">
+                <label for="inputminQAlert" class="form-label">Minimum Quantity Alert</label>
+                <input type="text" class="form-control" formControlName="minQAlert" id="inputminQAlert">
+            </div>
+            <!-- <div class="col-md-6">
+                <label for="inputBudget" class="form-label">Budget</label>
+                <input type="text" class="form-control" formControlName="Budget" id="inputBudget">
+            </div> -->
+            
+            <div class="col-md-6">
+                <label for="inputSDate" class="form-label">Created Date</label>
+                <input type="date" class="form-control" formControlName="startDate" id="inputSDate">
+            </div>
+           
+            
             <div class="col-md-6">
                 <label for="inputinvoiceNo" class="form-label">Invoice No</label>
                 <input type="text" class="form-control" formControlName="invoiceNo" id="inputEDate">
